@@ -6,6 +6,7 @@ import { setCredentials } from "@/state_management/slices/authSlice";
 import { useLoginMutation } from "@/state_management/slices/authApiSlice";
 import { useRouter, redirect } from "next/navigation";
 import { store } from "@/state_management/store";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const emailRef = useRef();
@@ -15,7 +16,7 @@ const Login = () => {
   const [errMsg, setErrMsg] = useState('');
 
   const [login, { isLoading }] = useLoginMutation();
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const router = useRouter();
   const auth = store.getState().auth.user;
 
@@ -38,7 +39,6 @@ const Login = () => {
 
     try {
       const userData = await login({ user: { email: email, password: pwd }}).unwrap()
-      console.log(userData)
       dispatch(setCredentials({ ...userData }))
       setUser('');
       setPwd('');

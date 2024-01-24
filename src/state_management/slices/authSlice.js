@@ -1,4 +1,7 @@
+'use client'
+
 import { createSlice } from "@reduxjs/toolkit";
+import Cookie from 'js-cookie';
 
 const initialState = {
   user: null,
@@ -9,10 +12,9 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setCredentials: (state, action) => {
-      const { user, accessToken } = action.payload;
-      state.user = user;
-      state.token = accessToken;
+    setCredentials(_state, action) {
+      Cookie.set('accessToken', action.payload.token);
+      return action.payload
     },
     logOut: (state, _action) => {
       state.user = null;

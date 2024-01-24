@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import StoreProvider from "@/state_management/StoreProvider";
+import AuthenticationProvider from "@/app/AuthenticatedPage";
 
 import "./globals.css";
 
@@ -14,7 +15,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <StoreProvider>{children}</StoreProvider>
+        <StoreProvider>
+          <AuthenticationProvider>
+            {children}
+          </AuthenticationProvider>
+        </StoreProvider>
       </body>
     </html>
   );

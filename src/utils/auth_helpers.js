@@ -1,8 +1,6 @@
-"use client";
-
-import { store } from "@/state_management/store";
+import Cookie from 'js-cookie';
 
 export const isAuthenticated = () => {
-  const user = store.getState().auth.user;
-  return user !== null && user !== undefined;
+  const accessToken = Cookie.get('accessToken');
+  return accessToken !== null && accessToken !== undefined;
 }

@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import StoreProvider from "@/state_management/StoreProvider";
 import AuthenticationProvider from "@/app/AuthenticatedProvider";
-import Nav from "@/components/Nav";
 import ModalRoot from "@/components/modal/ModalRoot";
 
 import "./globals.css";
@@ -19,10 +18,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} min-h-screen`}>
         <StoreProvider>
           <AuthenticationProvider>
-            <Nav />
-            <div className="flex justify-center items-center bg-gray-50">
-              {children}
-            </div>
+            {children}
             <ModalRoot />
           </AuthenticationProvider>
         </StoreProvider>

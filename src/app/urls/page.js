@@ -1,12 +1,11 @@
 'use client';
 
-import {useEffect, useState} from "react";
-import UrlList from "@/app/urls/components/UrlList";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {hideModal, showModal} from "@/state_management/slices/modalSlice";
-import {useAddUrlMutation, useDeleteUrlMutation, useGetUrlsQuery} from "@/app/api/slices/urlApiSlice";
-import { selectCurrentUser } from "@/state_management/slices/authSlice";
-import {selectUrls, setUrls, urlDeleted, urlUpdated} from "@/state_management/slices/urlSlice";
+import { showModal } from "@/state_management/slices/modalSlice";
+import { useDeleteUrlMutation, useGetUrlsQuery } from "@/app/api/slices/urlApiSlice";
+import { selectUrls, setUrls, urlDeleted } from "@/state_management/slices/urlSlice";
+import UrlList from "@/app/urls/components/UrlList";
 
 const Urls = () => {
   const dispatch = useDispatch();

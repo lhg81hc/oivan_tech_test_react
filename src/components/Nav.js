@@ -15,7 +15,7 @@ export default function Nav() {
           </a>
         </div>
 
-        <Link href="/urls">My URLs</Link>
+        <Link href="/urls">URLs</Link>
         <Link href="/users">Users</Link>
       </nav>
     </header>

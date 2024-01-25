@@ -15,7 +15,6 @@ export const urlApiSlice = apiSlice.injectEndpoints({
       },
     }),
     updateUrl: builder.mutation({
-      // note: an optional `queryFn` may be used in place of `query`
       query: ({ id, ...patch }) => ({
         url: `urls/${id}`,
         method: 'PUT',
@@ -29,8 +28,6 @@ export const urlApiSlice = apiSlice.injectEndpoints({
           method: 'DELETE',
         }
       },
-      // Invalidates all queries that subscribe to this Post `id` only.
-      // invalidatesTags: (result, error, id) => [{ type: 'Posts', id }],
     }),
   })
 });

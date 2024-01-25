@@ -1,0 +1,43 @@
+import { apiSlice } from "@/app/api/slices/apiSlice";
+
+export const urlApiSlice = apiSlice.injectEndpoints({
+  endpoints: builder => ({
+    getUrls: builder.query({
+      query: () => 'urls',
+    }),
+    addUrl: builder.mutation({
+      query(body) {
+        return {
+          url: 'urls',
+          method: 'POST',
+          body,
+        }
+      },
+    }),
+    updateUrl: builder.mutation({
+      // note: an optional `queryFn` may be used in place of `query`
+      query: ({ id, ...patch }) => ({
+        url: `urls/${id}`,
+        method: 'PUT',
+        body: patch,
+      }),
+    }),
+    deleteUrl: builder.mutation({
+      query(id) {
+        return {
+          url: `urls/${id}`,
+          method: 'DELETE',
+        }
+      },
+      // Invalidates all queries that subscribe to this Post `id` only.
+      // invalidatesTags: (result, error, id) => [{ type: 'Posts', id }],
+    }),
+  })
+});
+
+export const {
+  useGetUrlsQuery,
+  useAddUrlMutation,
+  useUpdateUrlMutation,
+  useDeleteUrlMutation,
+} = urlApiSlice

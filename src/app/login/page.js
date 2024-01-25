@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { setCredentials } from "@/state_management/slices/authSlice";
 import { useLoginMutation } from "@/app/api/slices/authApiSlice";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { store } from "@/state_management/store";
 import { useDispatch } from "react-redux";
 

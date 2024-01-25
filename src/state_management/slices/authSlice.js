@@ -12,9 +12,12 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setCredentials(_state, action) {
-      Cookie.set('accessToken', action.payload.token);
-      return action.payload
+    setCredentials(state, action) {
+      const { user, token } = action.payload;
+
+      Cookie.set('accessToken', token);
+      state.user = user;
+      state.token = token;
     },
     logOut: (state, _action) => {
       state.user = null;

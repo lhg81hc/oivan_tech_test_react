@@ -3,9 +3,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CreateEditUrlModal from "@/components/modal/CreateEditUrlModal";
+import CreateEditUserModal from "@/components/modal/CreateEditUserModal";
 
 const MODAL_COMPONENTS = {
   'CREATE_EDIT_URL': CreateEditUrlModal,
+  'CREATE_EDIT_USER': CreateEditUserModal,
 };
 
 const ModalRoot = ({ modalType, modalProps }) => {

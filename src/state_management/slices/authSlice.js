@@ -20,6 +20,7 @@ export const authSlice = createSlice({
       state.token = token;
     },
     logOut: (state, _action) => {
+      Cookie.remove('accessToken');
       state.user = null;
       state.token = null;
     }

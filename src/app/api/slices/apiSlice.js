@@ -3,7 +3,7 @@ import { setCredentials, logOut } from "@/state_management/slices/authSlice";
 import { getAccessToken } from "@/utils/auth_helpers";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://secret-bastion-97105-9201f1d44e83.herokuapp.com/api/v1',
+  baseUrl: process.env.NEXT_PUBLIC_BASE_API_URL,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const accessToken = getAccessToken();

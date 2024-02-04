@@ -3,30 +3,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showModal } from "@/state_management/slices/modalSlice";
-import { useDeleteUrlMutation, useGetUsersQuery } from "@/app/api/slices/userApiSlice";
-import { selectUsers, setUsers, userDeleted } from "@/state_management/slices/userSlice";
+import { useGetUsersQuery } from "@/app/api/slices/userApiSlice";
+import { selectUsers, setUsers } from "@/state_management/slices/userSlice";
 import UserList from "@/app/users/components/UserList";
 
 const Users = () => {
   const dispatch = useDispatch();
   const userList = useSelector(selectUsers);
   const { currentData, isFetching, isError } = useGetUsersQuery();
-  // const [deleteUrl, { isLoading }] = useDeleteUrlMutation();
 
   useEffect(() => {
     dispatch(setUsers(currentData))
   }, [currentData]);
 
-  // const removeUrl = async (user) => {
-  //   if (window.confirm('Delete the item?')){
-  //     try {
-  //       const data = await deleteUrl(user.id).unwrap();
-  //       dispatch(userDeleted({ ...user }))
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  // }
 
   return (
     <div className="h-screen w-full">

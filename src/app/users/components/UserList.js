@@ -1,5 +1,3 @@
-import { showModal } from "@/state_management/slices/modalSlice";
-
 function UserList({ currentData, isFetching, isError, dispatch, removeUser }) {
 
   if (isFetching && !currentData) {

@@ -1,8 +1,6 @@
 import { showModal } from "@/state_management/slices/modalSlice";
 
 function UrlList({ currentData, isFetching, isError, dispatch, removeUrl }) {
-  // const { currentData, isFetching, isError } = useGetUrlsQuery();
-
   if (isFetching && !currentData) {
     return (
       <div className="mt-10 flex flex-col">

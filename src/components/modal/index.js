@@ -1,4 +1,4 @@
-export { CreateEditUrlModal } from './CreateEditUrlModal';
-export { CreateEditUserModal } from './CreateEditUserModal';
-export { ModalContainer } from './ModalContainer';
-export { ModalRoot } from './ModalRoot';
+export { default as CreateEditUrlModal } from './CreateEditUrlModal';
+export { default as CreateEditUserModal } from './CreateEditUserModal';
+export { default as ModalContainer } from './ModalContainer';
+export { default as ModalRoot } from './ModalRoot';

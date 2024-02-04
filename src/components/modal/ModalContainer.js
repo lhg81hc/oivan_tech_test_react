@@ -36,7 +36,7 @@ const STYLES = {
 
 // PLEASE READ THE DOCUMENT http://reactcommunity.org/react-modal/ AND TRY NOT TO EDIT THIS WRAPPER.
 // If your modal has different styling or different buttons or different behavior, just wrap the <ReactModal> inside your modal
-export const ModalContainer = ({ modalType, dispatch, title, children, dismissible = true, reactModalProps = {} }) => {
+const ModalContainer = ({ modalType, dispatch, title, children, dismissible = true, reactModalProps = {} }) => {
   useEffect(() => {
     // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
     if (typeof window !== 'undefined') ReactModal.setAppElement('body');
@@ -82,4 +82,4 @@ export const ModalContainer = ({ modalType, dispatch, title, children, dismissib
   );
 };
 
-connect(state => state.modal)(ModalContainer);
+export default connect(state => state.modal)(ModalContainer);

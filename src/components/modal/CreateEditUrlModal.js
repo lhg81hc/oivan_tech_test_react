@@ -1,7 +1,7 @@
-import React, {useEffect, useRef, useState} from 'react';
-import { ModalContainer } from "@/components/modal/ModalContainer";
+import React, { useEffect, useRef, useState } from 'react';
+import { ModalContainer } from "./";
 import { useDispatch } from "react-redux";
-import { hideModal } from "@/state_management/slices/modalSlice";
+import { hideModal } from "@/state_management/slices";
 import { useAddUrlMutation, useUpdateUrlMutation } from "@/app/api/slices/urlApiSlice";
 import { urlAdded, urlUpdated } from "@/state_management/slices/urlSlice";
 

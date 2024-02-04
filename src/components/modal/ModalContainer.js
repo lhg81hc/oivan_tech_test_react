@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
-import ReactModal from 'react-modal';
 import { connect } from 'react-redux';
 import { hideModal } from "@/state_management/slices/modalSlice";
+import ReactModal from 'react-modal';
 
 const STYLES = {
   content: {
@@ -36,7 +36,7 @@ const STYLES = {
 
 // PLEASE READ THE DOCUMENT http://reactcommunity.org/react-modal/ AND TRY NOT TO EDIT THIS WRAPPER.
 // If your modal has different styling or different buttons or different behavior, just wrap the <ReactModal> inside your modal
-const ModalContainer = ({ modalType, dispatch, title, children, dismissible = true, reactModalProps = {} }) => {
+export const ModalContainer = ({ modalType, dispatch, title, children, dismissible = true, reactModalProps = {} }) => {
   useEffect(() => {
     // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
     if (typeof window !== 'undefined') ReactModal.setAppElement('body');
@@ -82,5 +82,4 @@ const ModalContainer = ({ modalType, dispatch, title, children, dismissible = tr
   );
 };
 
-export default connect(state => state.modal)(ModalContainer);
-
+connect(state => state.modal)(ModalContainer);

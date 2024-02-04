@@ -2,10 +2,12 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "@/app/api/slices/apiSlice";
-import authReducer from "@/state_management/slices/authSlice";
-import userReducer from "@/state_management/slices/userSlice";
-import urlReducer from "@/state_management/slices/urlSlice";
-import modalReducer from "@/state_management/slices/modalSlice";
+import {
+  authReducer,
+  modalReducer,
+  urlReducer,
+  userReducer,
+} from "./slices"
 
 export const store = configureStore({
   reducer: {

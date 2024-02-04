@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showModal } from "@/state_management/slices/modalSlice";
 import { useDeleteUrlMutation, useGetUrlsQuery } from "@/app/api/slices/urlApiSlice";
-import { selectUrls, setUrls, urlDeleted } from "@/state_management/slices/urlSlice";
+import { selectUrls, setUrls, urlDeleted } from "@/state_management/slices";
 import UrlList from "@/app/urls/components/UrlList";
 
 const Urls = () => {

@@ -28,6 +28,7 @@ export const urlsSlice = createSlice({
 })
 
 export const { setUrls, urlAdded, urlUpdated, urlDeleted } = urlsSlice.actions;
-export default urlsSlice.reducer;
 
 export const selectUrls = (state) => state.urls;
+
+export default urlsSlice.reducer;

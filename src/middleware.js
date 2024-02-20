@@ -1,17 +1,21 @@
 import { NextResponse } from 'next/server'
+import { cookies } from "next/headers";
 
 export function middleware(request) {
-  const currentUser = request.cookies.get('currentUser')?.value
+  const currentUser = request.cookies.get('accessToken')?.value
 
-  if (currentUser) {
-    return NextResponse.redirect(new URL('/dashboard', request.url))
-  } else {
+  console.log(`accessToken: ${request.cookies.get('accessToken')?.value}`)
+
+  if (currentUser === null || currentUser === undefined) {
     if (request.nextUrl.pathname === '/login') {
       return null
     } else {
       return NextResponse.redirect(new URL('/login', request.url))
     }
+    // return NextResponse.redirect(new URL('/dashboard', request.url))
   }
+
+  return null
 }
 
 export const config = {

@@ -5,6 +5,7 @@ import { setCredentials } from "@/state-management/slices/authSlice";
 import { useLoginMutation } from "@/state-management/api_ultils";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
+// import { cookies } from 'next/headers'
 
 const Login = () => {
   const emailRef = useRef();
@@ -33,7 +34,8 @@ const Login = () => {
       dispatch(setCredentials({ ...userData }))
       setEmail('');
       setPwd('');
-      router.push('/urls');
+      // cookies().set('accessToken', userData.token )
+      router.push('/dashboard');
     } catch (err) {
       if (!err?.data) {
         setErrMsg('No Server Response');

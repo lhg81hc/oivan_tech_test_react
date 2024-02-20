@@ -2,9 +2,8 @@
 
 import { useRef, useState, useEffect } from "react";
 import { setCredentials } from "@/state_management/slices/authSlice";
-import { useLoginMutation } from "@/app/api/slices/authApiSlice";
+import { useLoginMutation } from "@/state_management/api_ultils";
 import { useRouter } from "next/navigation";
-import { store } from "@/state_management/store";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
@@ -17,13 +16,6 @@ const Login = () => {
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
   const router = useRouter();
-  const auth = store.getState().auth.user;
-
-  useEffect(() => {
-    if (auth) {
-      router.push('/urls');
-    }
-  }, [])
 
   useEffect(() => {
     emailRef.current.focus();
@@ -55,7 +47,7 @@ const Login = () => {
     }
   }
 
-  const handleUserInput = (e) => setEmail(e.target.value);;
+  const handleUserInput = (e) => setEmail(e.target.value);
 
   const handlePwdInput = (e) => setPwd(e.target.value);
 

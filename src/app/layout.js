@@ -9,7 +9,7 @@ import AuthenticatedLayout from "@/components/AuthenticatedLayout";
 import PublicLayout from "@/components/PublicLayout";
 
 import "./globals.css";
-import {StoreProvider} from "@/state_management";
+import {StoreProvider} from "@/state-management";
 import {ModalRoot} from "@/components/modal";
 
 export default function RootLayout({ children }) {

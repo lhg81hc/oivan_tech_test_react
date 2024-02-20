@@ -1,4 +1,4 @@
-import { showModal } from "@/state_management/slices/modalSlice";
+import { showModal } from "@/state-management/slices/modalSlice";
 
 function UrlList({ currentData, isFetching, isError, dispatch, removeUrl }) {
   if (isFetching && !currentData) {

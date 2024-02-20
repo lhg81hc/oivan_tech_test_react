@@ -1,8 +1,8 @@
 'use client';
 
 import { useRef, useState, useEffect } from "react";
-import { setCredentials } from "@/state_management/slices/authSlice";
-import { useLoginMutation } from "@/state_management/api_ultils";
+import { setCredentials } from "@/state-management/slices/authSlice";
+import { useLoginMutation } from "@/state-management/api_ultils";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 

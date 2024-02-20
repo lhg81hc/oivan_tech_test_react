@@ -15,7 +15,7 @@ export const authSlice = createSlice({
     setCredentials(state, action) {
       const { user, token } = action.payload;
 
-      Cookie.set('accessToken', token);
+      Cookie.set('accessToken', token, { sameSite: 'None', secure: true });
       state.user = user;
       state.token = token;
     },

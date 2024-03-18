@@ -2,9 +2,9 @@
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { showModal } from "@/state_management/slices/modalSlice";
-import { useGetUsersQuery } from "@/app/api/slices/userApiSlice";
-import { selectUsers, setUsers } from "@/state_management/slices/userSlice";
+import { showModal } from "@/state-management/slices/modalSlice";
+import { useGetUsersQuery } from "@/state-management/api_ultils/userApiSlice";
+import { selectUsers, setUsers } from "@/state-management/slices/userSlice";
 import UserList from "@/app/users/components/UserList";
 
 const Users = () => {
@@ -15,7 +15,6 @@ const Users = () => {
   useEffect(() => {
     dispatch(setUsers(currentData))
   }, [currentData]);
-
 
   return (
     <div className="h-screen w-full">

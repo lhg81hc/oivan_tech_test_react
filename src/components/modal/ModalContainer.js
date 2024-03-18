@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { hideModal } from "@/state_management/slices/modalSlice";
+import { hideModal } from "@/state-management/slices";
 import ReactModal from 'react-modal';
 
 const STYLES = {

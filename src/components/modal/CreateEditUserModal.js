@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ModalContainer } from "./";
 import { useDispatch } from "react-redux";
-import { hideModal, userAdded } from "@/state_management/slices";
-import { useAddUserMutation } from "@/app/api/slices/userApiSlice";
+import { hideModal, userAdded } from "@/state-management/slices";
+import { useAddUserMutation } from "@/state-management/api_ultils/userApiSlice";
 
 const CreateEditUserModal = () => {
   const emailRef = useRef();

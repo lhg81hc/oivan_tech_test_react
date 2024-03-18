@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ModalContainer } from "./";
 import { useDispatch } from "react-redux";
-import { hideModal } from "@/state_management/slices";
-import { useAddUrlMutation, useUpdateUrlMutation } from "@/app/api/slices/urlApiSlice";
-import { urlAdded, urlUpdated } from "@/state_management/slices/urlSlice";
+import { hideModal } from "@/state-management/slices";
+import { useAddUrlMutation, useUpdateUrlMutation } from "@/state-management/api_ultils/urlApiSlice";
+import { urlAdded, urlUpdated } from "@/state-management/slices/urlSlice";
 
 const CreateEditUrlModal = ({ url }) => {
   const originalUrlRef = useRef();

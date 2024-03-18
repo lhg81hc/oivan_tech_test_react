@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { useDispatch } from "react-redux";
-import { logOut } from "@/state_management/slices/authSlice";
+import { logOut } from "@/state-management/slices/authSlice";
 import { useRouter } from "next/navigation";
 
 export default function Nav() {

@@ -2,9 +2,9 @@
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { showModal } from "@/state_management/slices/modalSlice";
-import { useDeleteUrlMutation, useGetUrlsQuery } from "@/app/api/slices/urlApiSlice";
-import { selectUrls, setUrls, urlDeleted } from "@/state_management/slices";
+import { showModal } from "@/state-management/slices/modalSlice";
+import { useDeleteUrlMutation, useGetUrlsQuery } from "@/state-management/api_ultils/urlApiSlice";
+import { selectUrls, setUrls, urlDeleted } from "@/state-management/slices";
 import UrlList from "@/app/urls/components/UrlList";
 
 const Urls = () => {

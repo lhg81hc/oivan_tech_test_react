@@ -5,7 +5,6 @@ import { setCredentials } from "@/state-management/slices/authSlice";
 import { useLoginMutation } from "@/state-management/api_ultils";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-// import { cookies } from 'next/headers'
 
 const Login = () => {
   const emailRef = useRef();
@@ -22,38 +21,29 @@ const Login = () => {
     emailRef.current.focus();
   }, []);
 
-  useEffect(() => {
-    setErrMsg('');
-  }, [email, pwd]);
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      const userData = await login({ user: { email: email, password: pwd }}).unwrap()
-      dispatch(setCredentials({ ...userData }))
-      setEmail('');
-      setPwd('');
-      // cookies().set('accessToken', userData.token )
-      router.push('/dashboard');
-    } catch (err) {
-      if (!err?.data) {
-        setErrMsg('No Server Response');
-      } else {
-        setErrMsg(err?.data?.errors[0])
-      }
-
-      if (errRef.current) {
-        errRef.current.focus();
-      }
-    }
+    login({ user: { email: email, password: pwd }})
+      .unwrap()
+      .then((userData) => {
+        dispatch(setCredentials({ ...userData }));
+        router.push('/dashboard');
+      })
+      .catch(err => {
+        setPwd('');
+        setErrMsg(err.data.errors[0].detail);
+        if (errRef.current) {
+          errRef.current.focus();
+        }
+      })
   }
 
   const handleUserInput = (e) => setEmail(e.target.value);
 
   const handlePwdInput = (e) => setPwd(e.target.value);
 
-  const content = (
+  return (
     <section className="flex justify-center items-center h-screen">
 
       <div className="w-96 p-6 shadow-lg bg-white rounded">
@@ -99,8 +89,7 @@ const Login = () => {
               </label>
             </div>
 
-            <div className={`bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 mt-3 ${errMsg.length !== 0 ? 'block' : 'hidden'}`} role="alert">
-              {/*<p className="font-bold">Informational message</p>*/}
+            <div className={`bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 mt-3 ${errMsg?.length !== 0 ? 'block' : 'hidden'}`} role="alert">
               <p ref={errRef} className="text-sm">{errMsg}</p>
             </div>
 
@@ -114,13 +103,9 @@ const Login = () => {
             </div>
           </form>
         </fieldset>
-
       </div>
-
     </section>
   );
-
-  return content;
 }
 
 export default Login;

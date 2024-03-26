@@ -4,28 +4,45 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showModal } from "@/state-management/slices/modalSlice";
 import { useDeleteUrlMutation, useGetUrlsQuery } from "@/state-management/api_ultils/urlApiSlice";
-import { selectUrls, setUrls, urlDeleted } from "@/state-management/slices";
+import {selectUrls, setCredentials, setUrls, urlDeleted} from "@/state-management/slices";
 import UrlList from "@/app/urls/components/UrlList";
 
 const Urls = () => {
   const dispatch = useDispatch();
   const urlList = useSelector(selectUrls);
-  const { currentData, isFetching, isError } = useGetUrlsQuery();
+  const { getUrls, isFetching, isError } = useGetUrlsQuery();
   const [deleteUrl, { isLoading }] = useDeleteUrlMutation();
 
   useEffect(() => {
-    dispatch(setUrls(currentData))
+    const dispatchSetUrls = () => dispatch(setUrls(currentData));
+
+    dispatchSetUrls()
   }, [currentData]);
 
+  const fetchUrls = async () => {
+    getUrls()
+      .unwrap()
+      .then((currentData) => {
+        dispatch(setUrls(currentData))
+        // // dispatch(setCredentials({ ...userData }));
+        // router.push('/urls');
+      })
+      .catch(err => {
+        setPwd('');
+        setErrMsg(err.data.errors[0].detail);
+        if (errRef.current) {
+          errRef.current.focus();
+        }
+      })
+  }
   const removeUrl = async (url) => {
-    if (window.confirm('Delete the item?')){
-      try {
-        const data = await deleteUrl(url.id).unwrap();
-        dispatch(urlDeleted({ ...url }))
-      } catch (err) {
-        console.log(err);
-      }
-    }
+    // if (window.confirm('Delete the item?')){
+    //   try {
+    //     const data = await deleteUrl(url.id).unwrap();
+    //     dispatch(urlDeleted({ ...url }))
+    //   } catch (err) {
+    //   }
+    // }
   }
 
   return (
